@@ -8,13 +8,7 @@ export default function App() {
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [difficulty, setDifficulty] = useState("normal");
   const [cardImages, setCardImages] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [isGameLost, setGameLost] = useState(false);
-
-  function lostGame() {
-    setIsGameRunning(false);
-    selectedImages([]);
-  }
+  const [isGameLost, setIsGameLost] = useState(false);
 
   return (
     <main className={styles.main}>
@@ -29,13 +23,13 @@ export default function App() {
           setIsGameRunning = {setIsGameRunning}/>
         : !isGameLost ?
           <GameScreen
-          setIsGameRunning = {setIsGameRunning}
+          setIsGameLost = {setIsGameLost}
           cardImages = {cardImages}
-          setCardImages = {setCardImages}
-          selectedImages = {selectedImages}
-          setSelectedImages = {setSelectedImages}/>
+          setCardImages = {setCardImages}/>
         : 
-          <LostScreen/>
+          <LostScreen
+          setIsGameLost = {setIsGameLost}
+          setIsGameRunning = {setIsGameRunning}/>
         }
         
       </div>

@@ -41,7 +41,6 @@ export default function ImageCards(props) {
 
     return ( <>
         {cardImages.map((element) => {
-            debugger;
             return <div key = {element.id}>
                 <img src = {element.url} height={120} width={120} className={styles.image}></img>
             </div>

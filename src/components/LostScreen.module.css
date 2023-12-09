@@ -1,0 +1,13 @@
+.lostPanel {
+    width: 30%;
+    background-color: var(--menuBackgroundColorTransparent);
+    text-align: center;
+    padding: 5px;
+    color: red;
+}
+
+.lostPanel button {
+    background: none;
+    border: none;
+    
+}

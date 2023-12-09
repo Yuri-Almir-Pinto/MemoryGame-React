@@ -1,0 +1,14 @@
+.standardButton, .standardButtonWithHover {
+    height: 2em;
+    background: none;
+    border: none;
+    color: var(--standardColor);
+    cursor: pointer;
+    font-size: 150%;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.standardButtonWithHover:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0mm 0mm 2mm rgb(255 255 255));
+}

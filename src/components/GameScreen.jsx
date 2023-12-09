@@ -1,8 +1,10 @@
 import styles from './GameScreen.module.css';
 import ImageCards from './imageCards';
+import {useState} from 'react';
 
 export default function GameScreen(props) {
-    const { setIsGameRunning, cardImages, setCardImages, selectedImages, setSelectedImages } = props;
+    const { setIsGameLost, cardImages, setCardImages } = props;
+    const [selectedImages, setSelectedImages] = useState([]);
 
     function randomizeImages() {
         const images = structuredClone(cardImages);
@@ -32,7 +34,7 @@ export default function GameScreen(props) {
                 const alreadyPresent = selectedImages.some((element) => element === target.src);
 
                 if (alreadyPresent) {
-                    setSelectedImages([]);
+                    setIsGameLost(true);
                 }
                 else {
                     let images = selectedImages.length !== 0 ? structuredClone(selectedImages) : [];
