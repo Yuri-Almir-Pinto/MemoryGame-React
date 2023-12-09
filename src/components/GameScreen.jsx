@@ -58,7 +58,7 @@ export default function GameScreen(props) {
 
     return (
         <div className={styles.outsidePanel}>
-            <h2>{selectedImages.length}/{cardImages.length} Images selected.</h2>
+            <h2>{selectedImages.length}/{difficulty} Images selected.</h2>
             <div className={styles.gamePanel} onClick={imageClickHandler}>
                 <ImageCards
                 cardImages = {cardImages}

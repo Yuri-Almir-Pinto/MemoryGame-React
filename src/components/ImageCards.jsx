@@ -49,7 +49,9 @@ export default function ImageCards(props) {
     }, [imagesLoaded])
 
     return ( <>
-        {cardImages.map((element) => {
+        {cardImages.map((element, index) => {
+            if (index >= difficulty)
+                return;
             return <div key = {element.id} className={styles.imageCard}>
                 <img src = {element.url} height={120} width={120} className={styles.image}></img>
             </div>
