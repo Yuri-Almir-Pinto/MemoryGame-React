@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './App.module.css';
 import SelectScreen from './components/SelectScreen';
 import GameScreen from './components/GameScreen';
@@ -6,6 +6,7 @@ import GameScreen from './components/GameScreen';
 export default function App() {
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [difficulty, setDifficulty] = useState("normal");
+  const [cardImages, setCardImages] = useState([]);
 
   function onChange( {target} ) {
     setValue(target.value);
@@ -24,7 +25,10 @@ export default function App() {
           setDifficulty = {setDifficulty}
           setIsGameRunning = {setIsGameRunning}/>
         : 
-          <GameScreen/>
+          <GameScreen
+          setIsGameRunning = {setIsGameRunning}
+          cardImages = {cardImages}
+          setCardImages = {setCardImages}/>
         }
         
       </div>
