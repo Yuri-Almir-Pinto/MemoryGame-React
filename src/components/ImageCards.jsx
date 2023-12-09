@@ -2,7 +2,7 @@ import styles from './ImageCards.module.css';
 import {useEffect} from 'react';
 
 export default function ImageCards(props) {
-    const { cardImages, setCardImages } = props;
+    const { cardImages, setCardImages, clickHandler } = props;
 
 
     useEffect(() => {
@@ -35,14 +35,13 @@ export default function ImageCards(props) {
         }).catch((err) => {
             console.log(`Erro: ${err}`);
         });
-
-        console.log(cardImages);
         
         return () => {};
     }, [cardImages])
 
     return ( <>
         {cardImages.map((element) => {
+            debugger;
             return <div key = {element.id}>
                 <img src = {element.url} height={120} width={120} className={styles.image}></img>
             </div>

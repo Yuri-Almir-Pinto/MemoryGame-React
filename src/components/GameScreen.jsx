@@ -1,12 +1,54 @@
 import styles from './GameScreen.module.css';
-import {useEffect} from 'react';
 import ImageCards from './imageCards';
 
 export default function GameScreen(props) {
-    const { setIsGameRunning, cardImages, setCardImages } = props;
+    const { setIsGameRunning, cardImages, setCardImages, selectedImages, setSelectedImages } = props;
+
+    function randomizeImages() {
+        const images = structuredClone(cardImages);
+        if(cardImages.length !== 0) {
+            for (let i = 0 ; i < 50 ; i++) {
+                const currentIndex = Math.floor((Math.random() * 20));
+                const newIndex = Math.floor((Math.random() * 20))
+
+                const store = images[newIndex];
+                images[newIndex] = images[currentIndex]
+                images[currentIndex] = store;
+            }
+        }
+        setCardImages(images);
+    }
+
+    function imageClickHandler({target}) {
+        debugger;
+        if (target.tagName === "IMG" && target.src != null) {
+            if (selectedImages.length === 0) {
+                let images = [];
+                images.push(target.src);
+                setSelectedImages(images);
+                randomizeImages();
+            }
+            else {
+                const alreadyPresent = selectedImages.some((element) => element === target.src);
+
+                if (alreadyPresent) {
+                    setSelectedImages([]);
+                }
+                else {
+                    let images = selectedImages.length !== 0 ? structuredClone(selectedImages) : [];
+            
+                    images.push(target.src);
+                    setSelectedImages(images);
+                    randomizeImages();
+                }
+                
+            }
+                
+        }
+    }
 
     return (
-        <div className={styles.gamePanel}>
+        <div className={styles.gamePanel} onClick={imageClickHandler}>
             <ImageCards
             cardImages = {cardImages}
             setCardImages = {setCardImages}/>
