@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './App.module.css';
+import generalStyles from './components/general.module.css'
 import SelectScreen from './components/SelectScreen';
 import GameScreen from './components/GameScreen';
 import EndScreen from './components/EndScreen';
@@ -16,6 +17,12 @@ export default function App() {
       <h1>
         { isGameRunning ? "Select a card that you have not selected before, please." : "Hello, welcome to my game." }
       </h1>
+      <button className={`${generalStyles.standardButtonWithHover} ${styles.backButton}`} onClick={() => {
+        setIsGameFinished(false);
+        setIsGameRunning(false);
+      }}>
+        Go back.
+      </button>
       <div className={styles.gameArea}>
         {!isGameRunning ? 
           <SelectScreen

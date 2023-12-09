@@ -3,6 +3,7 @@
   flex-direction: column;
   text-align: center;
   max-height: 95vh;
+  position: relative;
 }
 
 .main h1 {
@@ -17,4 +18,10 @@
   align-items: center;
   flex: 10 1 auto;
   height: 90vh;
+}
+
+.backButton {
+  position: absolute;
+  top: 1vh;
+  left: 1vw;
 }
