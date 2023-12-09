@@ -5,7 +5,7 @@ export default function SelectScreen(props) {
 
     function buttonClickHandler({target}) {
         if (target.tagName === "BUTTON" && target.value != null) {
-            setDifficulty(target.value);
+            setDifficulty(Number.parseInt(target.value));
         }
     }
 
@@ -13,16 +13,16 @@ export default function SelectScreen(props) {
         <div className={styles.selectPanel}>
             <h2>Select the game's difficulty.</h2>
             <div className={styles.difficultyButtons} onClick={buttonClickHandler}>
-                <button className={difficulty === "easy" ? styles.selectedDifficulty : ""} value="easy">
+                <button className={difficulty === 5 ? styles.selectedDifficulty : ""} value={5}>
                     Easy.
                 </button>
-                <button className={difficulty === "normal" ? styles.selectedDifficulty : ""} value="normal">
+                <button className={difficulty === 10 ? styles.selectedDifficulty : ""} value={10}>
                     Normal.
                 </button>
-                <button className={difficulty === "hard" ? styles.selectedDifficulty : ""} value="hard">
+                <button className={difficulty === 15 ? styles.selectedDifficulty : ""} value={15}>
                     Hard.
                 </button>
-                <button className={difficulty === "impossible" ? styles.selectedDifficulty : ""} value="impossible">
+                <button className={difficulty === 30 ? styles.selectedDifficulty : ""} value={30}>
                     Impossible.
                 </button>
             </div>

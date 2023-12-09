@@ -2,13 +2,14 @@ import { useState } from 'react';
 import styles from './App.module.css';
 import SelectScreen from './components/SelectScreen';
 import GameScreen from './components/GameScreen';
-import LostScreen from './components/LostScreen';
+import EndScreen from './components/EndScreen';
 
 export default function App() {
   const [isGameRunning, setIsGameRunning] = useState(false);
-  const [difficulty, setDifficulty] = useState("normal");
+  const [difficulty, setDifficulty] = useState(10);
   const [cardImages, setCardImages] = useState([]);
-  const [isGameLost, setIsGameLost] = useState(false);
+  const [isGameFinished, setIsGameFinished] = useState(false);
+  const [endMessage, setEndMessage] = useState("Wow, this should be a very cool message.")
 
   return (
     <main className={styles.main}>
@@ -21,15 +22,18 @@ export default function App() {
           difficulty = {difficulty}
           setDifficulty = {setDifficulty}
           setIsGameRunning = {setIsGameRunning}/>
-        : !isGameLost ?
+        : !isGameFinished ?
           <GameScreen
-          setIsGameLost = {setIsGameLost}
+          setIsGameFinished = {setIsGameFinished}
           cardImages = {cardImages}
-          setCardImages = {setCardImages}/>
+          setCardImages = {setCardImages}
+          setEndMessage = {setEndMessage}
+          difficulty = {difficulty}/>
         : 
-          <LostScreen
-          setIsGameLost = {setIsGameLost}
-          setIsGameRunning = {setIsGameRunning}/>
+          <EndScreen
+          setIsGameFinished = {setIsGameFinished}
+          setIsGameRunning = {setIsGameRunning}
+          endMessage = {endMessage}/>
         }
         
       </div>

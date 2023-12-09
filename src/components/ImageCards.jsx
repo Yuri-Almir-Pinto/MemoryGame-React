@@ -1,14 +1,14 @@
 import styles from './ImageCards.module.css';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 export default function ImageCards(props) {
-    const { cardImages, setCardImages, clickHandler } = props;
-
+    const { cardImages, setCardImages, difficulty, randomizeImages } = props;
+    const [imagesLoaded, setImagesLoaded] = useState(false);
 
     useEffect(() => {
         async function getData () {
             try {
-                const res = await fetch(`https://api.slingacademy.com/v1/sample-data/photos?limit=20`);
+                const res = await fetch(`https://api.slingacademy.com/v1/sample-data/photos?limit=${difficulty}`);
                 if (!res.ok)
                     throw new Error(`Error: Fetch result is not OK. Fetch result: ${res.status}`)
     
@@ -20,8 +20,9 @@ export default function ImageCards(props) {
                 console.log(err);
             }
         }
+        debugger;
 
-        if (cardImages.length !== 0)
+        if (cardImages.length !== 0 && !(cardImages.length < difficulty))
             return () => {};
 
         const data = getData();
@@ -32,16 +33,24 @@ export default function ImageCards(props) {
             })
 
             setCardImages(array);
+            setImagesLoaded(true);
         }).catch((err) => {
             console.log(`Erro: ${err}`);
         });
         
         return () => {};
-    }, [cardImages])
+    }, [cardImages, difficulty])
+
+    useEffect(() => {
+        if(imagesLoaded) {
+            randomizeImages();
+            setImagesLoaded(false);
+        }
+    }, [imagesLoaded])
 
     return ( <>
         {cardImages.map((element) => {
-            return <div key = {element.id}>
+            return <div key = {element.id} className={styles.imageCard}>
                 <img src = {element.url} height={120} width={120} className={styles.image}></img>
             </div>
         })}

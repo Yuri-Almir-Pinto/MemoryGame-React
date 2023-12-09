@@ -1,18 +1,17 @@
-import styles from './LostScreen.module.css';
+import styles from './EndScreen.module.css';
 import generalStyles from './general.module.css'
-import {useEffect} from 'react';
 
-export default function LostScreen(props) {
-    const {setIsGameLost, setIsGameRunning} = props
+export default function EndScreen(props) {
+    const {setIsGameFinished, setIsGameRunning, endMessage} = props
 
     function returnSelectScreen () {
-        setIsGameLost(false);
+        setIsGameFinished(false);
         setIsGameRunning(false);
     }
 
     return (
         <div className={styles.lostPanel}>
-            <h2>You lost. How sad.</h2>
+            <h2>{endMessage}</h2>
             <button className={generalStyles.standardButtonWithHover} onClick={returnSelectScreen}>
                 Return
             </button>
