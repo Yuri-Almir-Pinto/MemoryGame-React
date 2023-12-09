@@ -18,12 +18,15 @@ export default function App() {
       <h1>
         { isGameRunning ? "Select a card that you have not selected before, please." : "Hello, welcome to my game." }
       </h1>
-      <button className={`${generalStyles.standardButtonWithHover} ${styles.backButton}`} onClick={() => {
-        setIsGameFinished(false);
-        setIsGameRunning(false);
-      }}>
-        Go back.
-      </button>
+      { isGameRunning && 
+        <button className={`${generalStyles.standardButtonWithHover} ${styles.backButton}`} onClick={() => {
+          setIsGameFinished(false);
+          setIsGameRunning(false);
+        }}>
+          Go back.
+        </button>
+      }
+      
       <h2 className={styles.highScore}>
         Highscore: {highScore}
       </h2>
