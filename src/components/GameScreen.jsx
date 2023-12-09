@@ -3,8 +3,13 @@ import ImageCards from './imageCards';
 import {useState, useEffect} from 'react';
 
 export default function GameScreen(props) {
-    const { setIsGameFinished, cardImages, setCardImages, setEndMessage, difficulty } = props;
+    const { setIsGameFinished, cardImages, setCardImages, setEndMessage, difficulty, highScore, setHighScore } = props;
     const [selectedImages, setSelectedImages] = useState([]);
+
+    function decideHighScore() {
+        if (selectedImages.length + 1 > highScore)
+            setHighScore(highScore + 1);
+    }
 
     function randomizeImages() {
         const images = structuredClone(cardImages);
@@ -28,6 +33,7 @@ export default function GameScreen(props) {
                 images.push(target.src);
                 setSelectedImages(images);
                 randomizeImages();
+                decideHighScore();
             }
             else {
                 const alreadyPresent = selectedImages.some((element) => element === target.src);
@@ -42,6 +48,7 @@ export default function GameScreen(props) {
                     images.push(target.src);
                     setSelectedImages(images);
                     randomizeImages();
+                    decideHighScore();
                 }
                 
             }

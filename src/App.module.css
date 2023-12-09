@@ -25,3 +25,10 @@
   top: 1vh;
   left: 1vw;
 }
+
+.highScore {
+  margin: 0;
+  position: absolute;
+  top: 1vh;
+  right: 1vw;
+}

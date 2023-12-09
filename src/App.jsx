@@ -11,6 +11,7 @@ export default function App() {
   const [cardImages, setCardImages] = useState([]);
   const [isGameFinished, setIsGameFinished] = useState(false);
   const [endMessage, setEndMessage] = useState("Wow, this should be a very cool message.")
+  const [highScore, setHighScore] = useState(0);
 
   return (
     <main className={styles.main}>
@@ -23,6 +24,9 @@ export default function App() {
       }}>
         Go back.
       </button>
+      <h2 className={styles.highScore}>
+        Highscore: {highScore}
+      </h2>
       <div className={styles.gameArea}>
         {!isGameRunning ? 
           <SelectScreen
@@ -35,7 +39,9 @@ export default function App() {
           cardImages = {cardImages}
           setCardImages = {setCardImages}
           setEndMessage = {setEndMessage}
-          difficulty = {difficulty}/>
+          difficulty = {difficulty}
+          highScore = {highScore}
+          setHighScore = {setHighScore}/>
         : 
           <EndScreen
           setIsGameFinished = {setIsGameFinished}
