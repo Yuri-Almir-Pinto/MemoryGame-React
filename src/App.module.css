@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-height: 95vh;
+}
+
+.main h1 {
+  flex: 1;
+}
+
+.gameArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 10 1 auto;
+  height: 90vh;
+}
