@@ -1,5 +1,5 @@
 import styles from './GameScreen.module.css';
-import ImageCards from './imageCards';
+import ImageCards from './ImageCards';
 import {useState, useEffect} from 'react';
 
 export default function GameScreen(props) {
